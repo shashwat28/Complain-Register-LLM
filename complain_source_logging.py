@@ -36,9 +36,8 @@ def get_openrouter_response(prompt):
 
 
 def check_n_call(location):
-    second_prompt = open(r"D:\Complain Register LLM\combined_prompt.txt", "r")
+    second_prompt = open(r"combined_prompt.txt", "r")
     added_prompt = f"\nAnd my region is {location} ,also make sure to verify if these websites or apps are up and running and include twitter handles etc"
     final_prompt=second_prompt.read()+added_prompt
     fin_response = get_openrouter_response(final_prompt)
     return fin_response
-
