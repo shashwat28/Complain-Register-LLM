@@ -9,7 +9,7 @@ api_url = "https://openrouter.ai/api/v1/chat/completions"  # Replace with actual
 # Function to send a prompt to OpenRouter API
 def get_openrouter_response(prompt):
     headers = {
-        'Authorization': f'Bearer {os.env('API_KEY')}',
+        'Authorization': f'Bearer {os.environ['API_KEY']}',
         'Content-Type': 'application/json'
     }
     
