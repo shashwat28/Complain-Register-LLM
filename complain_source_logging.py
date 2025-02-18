@@ -1,16 +1,15 @@
 import requests
 import json
 import time
+import os
 
 # Set your OpenRouter API endpoint and key
 api_url = "https://openrouter.ai/api/v1/chat/completions"  # Replace with actual endpoint
-api_key = "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"
-# "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"  # Replace with your API key
 
 # Function to send a prompt to OpenRouter API
 def get_openrouter_response(prompt):
     headers = {
-        'Authorization': f'Bearer {api_key}',
+        'Authorization': f'Bearer {os.env('API_KEY')}',
         'Content-Type': 'application/json'
     }
     
