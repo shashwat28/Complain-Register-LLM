@@ -43,4 +43,3 @@ def check_n_call(location):
     fin_response = get_openrouter_response(final_prompt)
     return fin_response
 
-print(check_n_call('lucknow'))
