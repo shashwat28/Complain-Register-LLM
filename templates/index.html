@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complain Source Logs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            color: #333;
+        }
+        pre {
+            white-space: pre-wrap;       /* Ensures line breaks are respected */
+            word-wrap: break-word;       /* Prevents long words from breaking the layout */
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            color: #333;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>One Stop Complain Source Logs</h1>
+        
+        <!-- Form to accept location and submit to backend -->
+        <form action="/submit" method="POST" id="complaintForm" onsubmit="return validateForm()">
+            <label for="location">Enter Location:</label>
+            <input type="text" id="location" name="location" maxlength="100" placeholder="Enter location name..." required>
+            
+            <button type="submit">Submit</button>
+            
+            <!-- Error message div -->
+            <div id="errorMessage" class="error" style="display: none;">
+                Please enter a location.
+            </div>
+        </form>
+        
+        <!-- Display the result from the backend (Python code output) -->
+        {% if result %}
+        <div class="result">
+            <strong>Location:</strong> {{ location }}<br>
+            <strong>Result:</strong>
+            <pre>{{ result }}</pre>  <!-- Preserve formatting of the result here -->
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        // Form validation function
+        function validateForm() {
+            var location = document.getElementById("location").value;
+            var errorMessage = document.getElementById("errorMessage");
+            
+            // Check if location is empty
+            if (location.trim() === "") {
+                // Show error message
+                errorMessage.style.display = "block";
+                return false;  // Prevent form submission
+            } else {
+                // Hide error message
+                errorMessage.style.display = "none";
+                return true;  // Allow form submission
+            }
+        }
+    </script>
+</body>
+</html>
