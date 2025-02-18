@@ -5,11 +5,11 @@ import os
 
 # Set your OpenRouter API endpoint and key
 api_url = "https://openrouter.ai/api/v1/chat/completions"  # Replace with actual endpoint
-
+api_key=os.environ['API_KEY']
 # Function to send a prompt to OpenRouter API
 def get_openrouter_response(prompt):
     headers = {
-        'Authorization': f'Bearer {os.environ['API_KEY']}',
+        'Authorization': f'Bearer {api_key}',
         'Content-Type': 'application/json'
     }
     
